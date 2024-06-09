@@ -1,6 +1,7 @@
 import { Elysia } from 'elysia';
 import { connectDB } from '../config/connDB';
 import Route from './Routes/Route.routes';
+import { deviceController } from './controllers/DeviceController';
 
 const app = new Elysia()
 
@@ -9,9 +10,11 @@ const app = new Elysia()
     menyala: true
   }))
 
+  .post( '/' , deviceController)
+
   .group('/api' , (app) => app.use(Route))
 
-  .listen(3000);
+  .listen(80);
 
 console.log(
   `🦊 Elysia is running at ${app.server?.hostname}:${app.server?.port}`

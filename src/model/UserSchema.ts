@@ -2,7 +2,7 @@ import { Document, Schema, model } from 'mongoose';
 
 export interface IUser extends Document {
   username: string
-  status: string
+  status: boolean
   RFID: string
 }
 
@@ -14,7 +14,7 @@ const schema = new Schema<IUser>(
         unique: false,
       },
       status: {
-        type: String,
+        type: Boolean,
         required: false,
         unique: false,
       },
